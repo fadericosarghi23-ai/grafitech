@@ -1,0 +1,177 @@
+---
+/**
+ * Tasto "Bozze": mostra o nasconde i contenuti non verificati col cliente.
+ *
+ * - Testi: quelli scritti con bz() in src/data (vedi src/data/bozze.ts).
+ * - Immagini: le foto provvisorie hanno l'alt che inizia con il marcatore.
+ * - Blocchi interi: qualunque elemento con l'attributo data-bozza.
+ *
+ * Nascosti = visibility:hidden, cosi' lo spazio resta e il layout, i binari
+ * orizzontali e le animazioni non si spostano.
+ *
+ * Va incluso PRIMA del bundle del sito (site.ts): deve pulire testi e
+ * attributi prima che filtri e carosello li leggano.
+ */
+---
+
+<button
+  id="bozze-toggle"
+  type="button"
+  aria-pressed="true"
+  title="Mostra o nasconde i contenuti non ancora verificati col cliente"
+>
+  <span class="bozze-pallino" aria-hidden="true"></span>
+  <span data-bozze-label>Bozze visibili</span>
+  <span class="bozze-n" data-bozze-n></span>
+</button>
+
+<script is:inline>
+  (function () {
+    var INIZIO = '⁣';
+    var FINE = '⁤';
+    var TUTTI = /[⁣⁤]/g;
+    var marca = function (el) {
+      if (el && el.setAttribute) el.setAttribute('data-bozza', '');
+    };
+
+    // 1. Testi: avvolge ogni tratto INIZIO...FINE in <span data-bozza>.
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    var nodi = [];
+    while (walker.nextNode()) {
+      var v = walker.currentNode.nodeValue;
+      if (v.indexOf(INIZIO) !== -1 || v.indexOf(FINE) !== -1) nodi.push(walker.currentNode);
+    }
+    nodi.forEach(function (n) {
+      var genitore = n.parentNode;
+      if (!genitore || genitore.nodeName === 'SCRIPT' || genitore.nodeName === 'STYLE') return;
+      var testo = n.nodeValue;
+      var i = testo.indexOf(INIZIO);
+      var f = i === -1 ? -1 : testo.indexOf(FINE, i);
+      if (i === -1 || f === -1) {
+        // Marcatore spezzato su piu' nodi (es. il titolo dell'hero, una parola
+        // per span): si marca il titolo intero o il contenitore.
+        marca(genitore.closest ? genitore.closest('h1, h2, h3') || genitore : genitore);
+        n.nodeValue = testo.replace(TUTTI, '');
+        return;
+      }
+      var frammento = document.createDocumentFragment();
+      while (i !== -1 && f !== -1) {
+        if (i > 0) frammento.appendChild(document.createTextNode(testo.slice(0, i)));
+        var s = document.createElement('span');
+        s.setAttribute('data-bozza', '');
+        s.textContent = testo.slice(i + 1, f);
+        frammento.appendChild(s);
+        testo = testo.slice(f + 1);
+        i = testo.indexOf(INIZIO);
+        f = i === -1 ? -1 : testo.indexOf(FINE, i);
+      }
+      if (testo) frammento.appendChild(document.createTextNode(testo.replace(TUTTI, '')));
+      genitore.replaceChild(frammento, n);
+    });
+
+    // 2. Attributi: alt delle foto provvisorie -> l'immagine diventa bozza;
+    //    negli altri attributi (aria-label, data-filtro...) si toglie solo il
+    //    marcatore, in modo uguale ovunque cosi' i confronti restano coerenti.
+    document.querySelectorAll('*').forEach(function (el) {
+      for (var k = 0; k < el.attributes.length; k++) {
+        var a = el.attributes[k];
+        if (a.value.indexOf(INIZIO) === -1 && a.value.indexOf(FINE) === -1) continue;
+        if (a.name === 'alt' && a.value.charAt(0) === INIZIO) marca(el);
+        el.setAttribute(a.name, a.value.replace(TUTTI, ''));
+      }
+    });
+
+    // Separatori "/" fra due bozze (es. categoria / localita'): seguono le bozze,
+    // altrimenti a contenuti nascosti resterebbe una barra orfana.
+    var eBozza = function (el) {
+      return !!el && (el.hasAttribute('data-bozza') ||
+        (el.children.length === 1 && el.children[0].hasAttribute('data-bozza') &&
+          el.textContent.trim() === el.children[0].textContent.trim()));
+    };
+    document.querySelectorAll('[data-bozza]').forEach(function (b) {
+      var sep = b.nextSibling;
+      if (sep && sep.nodeType === 3 && /^\s*\/\s*$/.test(sep.nodeValue) && sep.nextSibling && sep.nextSibling.nodeType === 1 && sep.nextSibling.hasAttribute('data-bozza')) {
+        var s = document.createElement('span');
+        s.setAttribute('data-bozza', '');
+        s.textContent = sep.nodeValue;
+        sep.parentNode.replaceChild(s, sep);
+      }
+    });
+    document.querySelectorAll('span[aria-hidden="true"]').forEach(function (el) {
+      if (el.textContent.trim() === '/' && eBozza(el.previousElementSibling) && eBozza(el.nextElementSibling)) marca(el);
+    });
+
+    // 3. Il tasto.
+    var root = document.documentElement;
+    var tasto = document.getElementById('bozze-toggle');
+    var label = tasto.querySelector('[data-bozze-label]');
+    tasto.querySelector('[data-bozze-n]').textContent = String(
+      document.querySelectorAll('[data-bozza]').length
+    );
+    var applica = function (visibili) {
+      root.classList.toggle('bozze-nascoste', !visibili);
+      tasto.setAttribute('aria-pressed', visibili ? 'true' : 'false');
+      label.textContent = visibili ? 'Bozze visibili' : 'Bozze nascoste';
+      try {
+        localStorage.setItem('bozze-visibili', visibili ? '1' : '0');
+      } catch (e) {}
+    };
+    var salvato = null;
+    try {
+      salvato = localStorage.getItem('bozze-visibili');
+    } catch (e) {}
+    applica(salvato !== '0');
+    tasto.addEventListener('click', function () {
+      applica(root.classList.contains('bozze-nascoste'));
+    });
+  })();
+</script>
+
+<style is:global>
+  #bozze-toggle {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    z-index: 90;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border-radius: 999px;
+    border: 1px solid rgb(0 0 0 / 0.12);
+    background: #fff;
+    color: #1a171c;
+    font: 600 12px/1 var(--font-eyebrow);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 10px 30px -12px rgb(0 0 0 / 0.45);
+    cursor: pointer;
+  }
+  #bozze-toggle:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+  .bozze-pallino {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #e0a100;
+  }
+  .bozze-nascoste .bozze-pallino {
+    background: #b9b9c0;
+  }
+  .bozze-n {
+    font-variant-numeric: tabular-nums;
+    opacity: 0.55;
+  }
+
+  /* Visibili: si riconoscono dal tratteggio ambra. */
+  html:not(.bozze-nascoste) [data-bozza] {
+    outline: 1px dashed rgb(224 161 0 / 0.9);
+    outline-offset: 2px;
+  }
+  /* Nascoste: lo spazio resta, cosi' layout e animazioni non si spostano. */
+  .bozze-nascoste [data-bozza] {
+    visibility: hidden !important;
+  }
+</style>

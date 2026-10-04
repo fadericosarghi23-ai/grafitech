@@ -1,0 +1,291 @@
+[
+  {
+    "file": "src/assets/img/progetto-01.jpg",
+    "w": 1920,
+    "h": 1080,
+    "etichetta": "HERO / VETRINA 01"
+  },
+  {
+    "file": "src/assets/img/progetto-02.jpg",
+    "w": 2000,
+    "h": 1333,
+    "etichetta": "HERO / VETRINA 02"
+  },
+  {
+    "file": "src/assets/img/progetto-03.jpg",
+    "w": 1920,
+    "h": 1441,
+    "etichetta": "HERO / VETRINA 03"
+  },
+  {
+    "file": "src/assets/img/progetto-04.jpg",
+    "w": 1500,
+    "h": 1000,
+    "etichetta": "HERO / VETRINA 04"
+  },
+  {
+    "file": "src/assets/img/progetto-05.jpg",
+    "w": 1500,
+    "h": 1000,
+    "etichetta": "HERO / VETRINA 05"
+  },
+  {
+    "file": "src/assets/img/progetto-06.jpg",
+    "w": 1500,
+    "h": 1000,
+    "etichetta": "HERO / VETRINA 06"
+  },
+  {
+    "file": "src/assets/img/fase-01.jpg",
+    "w": 1920,
+    "h": 1080,
+    "etichetta": "METODO FASE 01"
+  },
+  {
+    "file": "src/assets/img/fase-02.jpg",
+    "w": 1061,
+    "h": 1500,
+    "etichetta": "METODO FASE 02"
+  },
+  {
+    "file": "src/assets/img/fase-03.jpg",
+    "w": 1920,
+    "h": 2560,
+    "etichetta": "METODO FASE 03"
+  },
+  {
+    "file": "src/assets/img/fase-04.jpg",
+    "w": 2000,
+    "h": 1334,
+    "etichetta": "METODO FASE 04"
+  },
+  {
+    "file": "src/assets/img/ambito-01.jpg",
+    "w": 2000,
+    "h": 1333,
+    "etichetta": "AMBITO 01"
+  },
+  {
+    "file": "src/assets/img/ambito-02.jpg",
+    "w": 2000,
+    "h": 1334,
+    "etichetta": "AMBITO 02"
+  },
+  {
+    "file": "src/assets/img/ambito-03.jpg",
+    "w": 1500,
+    "h": 1000,
+    "etichetta": "AMBITO 03"
+  },
+  {
+    "file": "src/assets/img/ambito-04.jpg",
+    "w": 490,
+    "h": 490,
+    "etichetta": "AMBITO 04"
+  },
+  {
+    "file": "src/assets/img/ritratto-fondatore.jpg",
+    "w": 2304,
+    "h": 3456,
+    "etichetta": "FOTO DEI TRE SOCI"
+  },
+  {
+    "file": "src/assets/img/logo.png",
+    "w": 283,
+    "h": 71,
+    "etichetta": "LOGO",
+    "trasparente": true
+  },
+  {
+    "file": "src/assets/img/progetti/progetto-01.jpg",
+    "w": 490,
+    "h": 490,
+    "etichetta": "COVER PROGETTO 01"
+  },
+  {
+    "file": "src/assets/img/progetti/progetto-02.jpg",
+    "w": 1622,
+    "h": 2095,
+    "etichetta": "COVER PROGETTO 02"
+  },
+  {
+    "file": "src/assets/img/progetti/progetto-03.jpg",
+    "w": 2000,
+    "h": 1334,
+    "etichetta": "COVER PROGETTO 03"
+  },
+  {
+    "file": "src/assets/img/progetti/progetto-04.jpg",
+    "w": 490,
+    "h": 490,
+    "etichetta": "COVER PROGETTO 04"
+  },
+  {
+    "file": "src/assets/img/progetti/progetto-05.jpg",
+    "w": 490,
+    "h": 490,
+    "etichetta": "COVER PROGETTO 05"
+  },
+  {
+    "file": "src/assets/img/progetti/progetto-06.jpg",
+    "w": 490,
+    "h": 490,
+    "etichetta": "COVER PROGETTO 06"
+  },
+  {
+    "file": "src/assets/img/progetti/progetto-07.jpg",
+    "w": 490,
+    "h": 490,
+    "etichetta": "COVER PROGETTO 07"
+  },
+  {
+    "file": "src/assets/img/progetti/progetto-08.jpg",
+    "w": 490,
+    "h": 490,
+    "etichetta": "COVER PROGETTO 08"
+  },
+  {
+    "file": "src/assets/img/progetti/progetto-09.jpg",
+    "w": 490,
+    "h": 490,
+    "etichetta": "COVER PROGETTO 09"
+  },
+  {
+    "file": "src/assets/img/progetti/progetto-10.jpg",
+    "w": 490,
+    "h": 490,
+    "etichetta": "COVER PROGETTO 10"
+  },
+  {
+    "file": "src/assets/img/progetti/progetto-11.jpg",
+    "w": 490,
+    "h": 490,
+    "etichetta": "COVER PROGETTO 11"
+  },
+  {
+    "file": "src/assets/img/progetti/progetto-12.jpg",
+    "w": 490,
+    "h": 490,
+    "etichetta": "COVER PROGETTO 12"
+  },
+  {
+    "file": "src/assets/img/progetti/progetto-13.jpg",
+    "w": 490,
+    "h": 490,
+    "etichetta": "COVER PROGETTO 13"
+  },
+  {
+    "file": "src/assets/img/progetti/progetto-14.jpg",
+    "w": 490,
+    "h": 490,
+    "etichetta": "COVER PROGETTO 14"
+  },
+  {
+    "file": "src/assets/img/progetti/progetto-15.jpg",
+    "w": 490,
+    "h": 490,
+    "etichetta": "COVER PROGETTO 15"
+  },
+  {
+    "file": "src/assets/img/progetti/progetto-16.jpg",
+    "w": 772,
+    "h": 515,
+    "etichetta": "COVER PROGETTO 16"
+  },
+  {
+    "file": "src/assets/img/progetti-extra/extra-01.jpg",
+    "w": 1920,
+    "h": 1080,
+    "etichetta": "FOTO EXTRA 01"
+  },
+  {
+    "file": "src/assets/img/progetti-extra/extra-02.jpg",
+    "w": 1920,
+    "h": 1080,
+    "etichetta": "FOTO EXTRA 02"
+  },
+  {
+    "file": "src/assets/img/progetti-extra/extra-03.jpg",
+    "w": 1500,
+    "h": 1000,
+    "etichetta": "FOTO EXTRA 03"
+  },
+  {
+    "file": "src/assets/img/progetti-extra/extra-04.jpg",
+    "w": 1500,
+    "h": 1000,
+    "etichetta": "FOTO EXTRA 04"
+  },
+  {
+    "file": "src/assets/img/progetti-extra/extra-05.jpg",
+    "w": 1500,
+    "h": 1000,
+    "etichetta": "FOTO EXTRA 05"
+  },
+  {
+    "file": "src/assets/img/progetti-extra/extra-06.jpg",
+    "w": 1500,
+    "h": 1000,
+    "etichetta": "FOTO EXTRA 06"
+  },
+  {
+    "file": "src/assets/img/progetti-extra/extra-07.jpg",
+    "w": 2000,
+    "h": 1334,
+    "etichetta": "FOTO EXTRA 07"
+  },
+  {
+    "file": "src/assets/img/progetti-extra/extra-08.jpg",
+    "w": 2000,
+    "h": 1334,
+    "etichetta": "FOTO EXTRA 08"
+  },
+  {
+    "file": "src/assets/img/progetti-extra/extra-09.jpg",
+    "w": 2000,
+    "h": 1334,
+    "etichetta": "FOTO EXTRA 09"
+  },
+  {
+    "file": "src/assets/img/progetti-extra/extra-10.jpg",
+    "w": 2000,
+    "h": 1333,
+    "etichetta": "FOTO EXTRA 10"
+  },
+  {
+    "file": "public/og-default.jpg",
+    "w": 1500,
+    "h": 1000,
+    "etichetta": "OPEN GRAPH"
+  },
+  {
+    "file": "public/favicon-32.jpg",
+    "w": 32,
+    "h": 32,
+    "etichetta": "FAVICON"
+  },
+  {
+    "file": "public/favicon.ico",
+    "w": 32,
+    "h": 32,
+    "etichetta": "FAVICON"
+  },
+  {
+    "file": "public/icon-192.jpg",
+    "w": 192,
+    "h": 192,
+    "etichetta": "ICONA"
+  },
+  {
+    "file": "public/favicon-270.jpg",
+    "w": 270,
+    "h": 270,
+    "etichetta": "ICONA"
+  },
+  {
+    "file": "public/apple-touch-icon.jpg",
+    "w": 180,
+    "h": 180,
+    "etichetta": "ICONA"
+  }
+]

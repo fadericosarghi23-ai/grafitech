@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://grafitech.vda.it/sitemap-index.xml

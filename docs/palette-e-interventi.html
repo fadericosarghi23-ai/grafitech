@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<title>Studio Grafitech — Palette e interventi</title>
+<style>
+  @font-face { font-family: 'Cormorant Garamond'; font-weight: 500; src: url('../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Poppins'; font-weight: 400; src: url('../node_modules/@fontsource/poppins/files/poppins-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Poppins'; font-weight: 500; src: url('../node_modules/@fontsource/poppins/files/poppins-latin-500-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Poppins'; font-weight: 700; src: url('../node_modules/@fontsource/poppins/files/poppins-latin-700-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Mulish'; font-weight: 700; src: url('../node_modules/@fontsource/mulish/files/mulish-latin-700-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Prata'; font-weight: 400; src: url('../node_modules/@fontsource/prata/files/prata-latin-400-normal.woff2') format('woff2'); }
+
+  :root {
+    --brand-ink: #bd2c16; --brand: #e5624a; --brand-soft: #f08a73;
+    --ink: #1a171c; --body: #4b4a4f; --muted: #717171;
+    --line: #eaeaea; --surface: #f8f8f8;
+    --ok: #2e7d4f; --warn: #b7791f;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; }
+  body { font-family: 'Poppins', sans-serif; font-size: 9.6pt; line-height: 1.5; color: var(--body); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .pagina { width: 210mm; height: 297mm; padding: 15mm 16mm 13mm; position: relative; overflow: hidden; page-break-after: always; break-after: page; }
+  .pagina:last-child { page-break-after: auto; break-after: auto; }
+  .piede { position: absolute; left: 16mm; right: 16mm; bottom: 8mm; display: flex; justify-content: space-between; font-family: 'Mulish', sans-serif; font-size: 7pt; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); border-top: 1px solid var(--line); padding-top: 2.5mm; }
+  .occhiello { font-family: 'Mulish', sans-serif; font-weight: 700; font-size: 7.6pt; letter-spacing: .18em; text-transform: uppercase; color: var(--brand-ink); }
+  h1 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 34pt; line-height: 1.05; color: var(--ink); margin-top: 3mm; }
+  h2 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 21pt; line-height: 1.1; color: var(--ink); margin: 1.5mm 0 4mm; }
+  h3 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 9.6pt; color: var(--ink); margin-bottom: 1mm; }
+  p + p { margin-top: 2mm; }
+  strong { color: var(--ink); font-weight: 500; }
+  code { font-family: Consolas, monospace; font-size: 8.4pt; background: var(--surface); padding: 0 1mm; border-radius: 1mm; }
+  .intro { font-size: 10.6pt; max-width: 150mm; margin-top: 4mm; }
+  .sep { height: 1px; background: var(--line); margin: 6mm 0; }
+
+  /* Copertina */
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .cover-top img { width: 52mm; }
+  .cover-meta { text-align: right; font-family: 'Mulish', sans-serif; font-size: 7.6pt; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); line-height: 1.8; }
+  .shot { width: 100%; border-radius: 2mm; display: block; margin-top: 7mm; border: 1px solid var(--line); }
+  .didas { font-size: 7.6pt; color: var(--muted); margin-top: 1.5mm; }
+
+  /* Palette */
+  .swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5mm; }
+  .sw { border: 1px solid var(--line); border-radius: 2mm; overflow: hidden; }
+  .sw .c { height: 11mm; }
+  .sw .t { padding: 2.2mm 3mm 2.6mm; }
+  .sw .n { font-weight: 500; color: var(--ink); font-size: 8.8pt; }
+  .sw .h { font-family: Consolas, monospace; font-size: 8.2pt; color: var(--ink); }
+  .sw .u { font-size: 7.6pt; color: var(--muted); line-height: 1.35; margin-top: .6mm; }
+  .grandi { display: grid; grid-template-columns: 1.15fr 1fr; gap: 3.5mm; margin-bottom: 3.5mm; }
+  .grandi .c { height: 21mm; display: flex; align-items: flex-end; padding: 3mm; color: #fff; font-family: 'Mulish', sans-serif; font-weight: 700; font-size: 7.4pt; letter-spacing: .14em; text-transform: uppercase; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 8.6pt; }
+  th { text-align: left; font-family: 'Mulish', sans-serif; font-weight: 700; font-size: 7pt; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--ink); padding: 1.6mm 2mm; }
+  td { border-bottom: 1px solid var(--line); padding: 1.8mm 2mm; vertical-align: top; }
+  td.num { font-family: Consolas, monospace; white-space: nowrap; }
+  .chip { display: inline-block; width: 9mm; height: 5mm; border-radius: 1mm; vertical-align: middle; margin-right: 1.5mm; border: 1px solid rgba(0,0,0,.08); font-size: 7.5pt; line-height: 5mm; text-align: center; font-weight: 700; }
+  .ok { color: var(--ok); font-weight: 700; }
+  .ko { color: var(--brand-ink); font-weight: 700; }
+
+  .tipo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.5mm; }
+  .tipo > div { border: 1px solid var(--line); border-radius: 2mm; padding: 3mm; }
+  .tipo .esempio { font-size: 17pt; color: var(--ink); line-height: 1.1; margin: 1.5mm 0 1mm; }
+  .tipo .u { font-size: 7.6pt; color: var(--muted); line-height: 1.35; }
+
+  /* Liste errori / interventi */
+  .voce { display: grid; grid-template-columns: 7mm 1fr; gap: 2.5mm; padding: 2.6mm 0; border-bottom: 1px solid var(--line); }
+  .voce:last-child { border-bottom: 0; }
+  .voce .b { width: 7mm; height: 7mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 8pt; margin-top: .4mm; }
+  .b.err { background: var(--brand-ink); }
+  .b.fix { background: var(--ink); }
+  .b.mig { background: var(--ok); }
+  .b.apr { background: var(--warn); }
+  .voce p { font-size: 8.8pt; line-height: 1.45; }
+  .prima { color: var(--muted); }
+  .dopo { color: var(--ink); }
+  .due { display: grid; grid-template-columns: 1fr 1fr; gap: 0 7mm; }
+  .box { background: var(--surface); border-radius: 2mm; padding: 4mm 5mm; }
+  .box.scuro { background: var(--ink); color: rgba(255,255,255,.82); }
+  .box.scuro h3, .box.scuro strong { color: #fff; }
+  .numeri { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin: 4mm 0 0; }
+  .numeri div { border-top: 2px solid var(--brand); padding-top: 2mm; }
+  .numeri b { display: block; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 22pt; color: #fff; line-height: 1; }
+  .numeri span { font-size: 7.4pt; color: rgba(255,255,255,.65); }
+</style>
+</head>
+<body>
+
+<!-- ============================ PAGINA 1 ============================ -->
+<section class="pagina">
+  <div class="cover-top">
+    <img src="../src/assets/img/logo.png" alt="Logo Studio Grafitech" />
+    <div class="cover-meta">Nuovo sito web<br />Documento di consegna<br />Ottobre 2026</div>
+  </div>
+
+  <p class="occhiello" style="margin-top:14mm">Studio Grafitech · Aosta</p>
+  <h1>Palette, errori corretti<br />e miglioramenti</h1>
+  <p class="intro">
+    Il sito attuale (<strong>grafitech.vda.it</strong>) è una pagina WordPress con il tema di serie:
+    nome, claim, indirizzo, orari, contatti e i tre soci. Il nuovo sito parte da quei dati, li
+    corregge dove serviva e li inserisce in una landing completa con l'identità visiva ricavata
+    dal logo dello studio.
+  </p>
+
+  <img class="shot" src="img/hero.jpg" alt="" />
+  <p class="didas">L'apertura del nuovo sito: claim originale dello studio, servizi e indirizzo reali, palette del logo.
+    Foto e didascalia del progetto sono provvisorie (riquadro tratteggiato = bozza da confermare).</p>
+
+  <div class="sep"></div>
+
+  <div class="due">
+    <div>
+      <h3>Cosa contiene il documento</h3>
+      <p>1 · Questa introduzione<br />2 · La palette e la tipografia, con i contrasti misurati<br />
+        3 · Gli errori del sito attuale e quelli corretti durante il lavoro<br />4 · I miglioramenti, le verifiche e ciò che resta da fare</p>
+    </div>
+    <div>
+      <h3>Come leggere i contenuti in bozza</h3>
+      <p>I testi non presenti sul sito attuale e le foto provvisorie sono marcati come <strong>bozza</strong>.
+        Il tasto in basso a sinistra nel sito li mostra o li nasconde, così lo studio vede subito cosa va confermato.</p>
+    </div>
+  </div>
+
+  <div class="piede"><span>Studio Grafitech · via Festaz 64, Aosta</span><span>1 / 4</span></div>
+</section>
+
+<!-- ============================ PAGINA 2 ============================ -->
+<section class="pagina">
+  <p class="occhiello">La palette</p>
+  <h2>Due colori, presi dal logo</h2>
+  <p style="margin-bottom:5mm; max-width:160mm">I colori sono misurati sui pixel del logo dello studio: il <strong>rosso mattone</strong> dell'arco e
+    l'<strong>antracite</strong> delle aste del compasso. Tutto il resto è una scala di neutri caldi che li lascia lavorare.
+    Il sito attuale invece usava i colori di serie del tema WordPress (giallo, lilla, viola), scollegati dal marchio.</p>
+
+  <div class="grandi">
+    <div class="sw"><div class="c" style="background:#bd2c16">Rosso mattone · dal logo</div>
+      <div class="t"><span class="n">Brand ink</span> · <span class="h">#BD2C16</span>
+        <div class="u">Testo, link e bottoni su fondo chiaro. È esattamente il rosso del logo.</div></div></div>
+    <div class="sw"><div class="c" style="background:#1a171c">Antracite · dal logo</div>
+      <div class="t"><span class="n">Ink</span> · <span class="h">#1A171C</span>
+        <div class="u">Titoli, sezione contatti, footer, menu.</div></div></div>
+  </div>
+
+  <div class="swatches">
+    <div class="sw"><div class="c" style="background:#e5624a"></div><div class="t"><span class="n">Brand</span> <span class="h">#E5624A</span><div class="u">Il rosso schiarito per i fondi scuri: decorazioni, occhielli, bordi.</div></div></div>
+    <div class="sw"><div class="c" style="background:#f08a73"></div><div class="t"><span class="n">Brand soft</span> <span class="h">#F08A73</span><div class="u">Variante chiara per dettagli su fondo scuro.</div></div></div>
+    <div class="sw"><div class="c" style="background:#4b4a4f"></div><div class="t"><span class="n">Body</span> <span class="h">#4B4A4F</span><div class="u">Testo corrente.</div></div></div>
+    <div class="sw"><div class="c" style="background:#717171"></div><div class="t"><span class="n">Muted</span> <span class="h">#717171</span><div class="u">Testi secondari, didascalie.</div></div></div>
+    <div class="sw"><div class="c" style="background:#f8f8f8"></div><div class="t"><span class="n">Surface</span> <span class="h">#F8F8F8</span><div class="u">Fondo delle sezioni alternate.</div></div></div>
+    <div class="sw"><div class="c" style="background:#eaeaea"></div><div class="t"><span class="n">Line</span> <span class="h">#EAEAEA</span><div class="u">Bordi delle card e divisori.</div></div></div>
+  </div>
+
+  <p class="occhiello" style="margin-top:5mm">Contrasti misurati (WCAG 2.1, soglia AA 4.5:1)</p>
+  <table style="margin-top:2mm">
+    <tr><th>Combinazione</th><th>Uso</th><th>Rapporto</th><th>Esito</th></tr>
+    <tr><td><span class="chip" style="background:#fff;color:#bd2c16">Aa</span>Rosso #BD2C16 su bianco</td><td>link, testo in evidenza</td><td class="num">5.94 : 1</td><td class="ok">AA</td></tr>
+    <tr><td><span class="chip" style="background:#bd2c16;color:#fff">Aa</span>Bianco su bottone rosso</td><td>CTA "Scopri i progetti", "Scrivici"</td><td class="num">5.94 : 1</td><td class="ok">AA</td></tr>
+    <tr><td><span class="chip" style="background:#1a171c;color:#e5624a">Aa</span>Rosso chiaro #E5624A su antracite</td><td>occhielli nella sezione contatti</td><td class="num">5.22 : 1</td><td class="ok">AA</td></tr>
+    <tr><td><span class="chip" style="background:#1a171c;color:#bd2c16">Aa</span>Rosso del logo su antracite</td><td>scartato: sotto soglia</td><td class="num">2.99 : 1</td><td class="ko">No</td></tr>
+    <tr><td><span class="chip" style="background:#fff;color:#4b4a4f">Aa</span>Testo #4B4A4F su bianco</td><td>paragrafi</td><td class="num">8.78 : 1</td><td class="ok">AAA</td></tr>
+    <tr><td><span class="chip" style="background:#fff;color:#717171">Aa</span>Grigio #717171 su bianco</td><td>didascalie</td><td class="num">4.88 : 1</td><td class="ok">AA</td></tr>
+  </table>
+
+  <p class="occhiello" style="margin-top:5mm">Tipografia</p>
+  <div class="tipo" style="margin-top:2mm">
+    <div><span class="occhiello" style="color:var(--muted)">Titoli</span><div class="esempio" style="font-family:'Cormorant Garamond'">Progettazione</div><div class="u">Cormorant Garamond 500: serif classica, da disegno tecnico.</div></div>
+    <div><span class="occhiello" style="color:var(--muted)">Testo</span><div class="esempio" style="font-family:'Poppins';font-size:13pt;margin-top:3mm">Direzione lavori</div><div class="u">Poppins 400: leggibile anche su telefono.</div></div>
+    <div><span class="occhiello" style="color:var(--muted)">Citazioni</span><div class="esempio" style="font-family:'Prata';font-size:14pt;margin-top:2.5mm">“Rilievo”</div><div class="u">Prata 400: per la frase dello studio.</div></div>
+    <div><span class="occhiello" style="color:var(--muted)">Etichette</span><div class="esempio" style="font-family:'Mulish';font-weight:700;font-size:10pt;letter-spacing:.16em;margin-top:4.5mm">CONTATTI</div><div class="u">Mulish 700 maiuscolo: occhielli e menu.</div></div>
+  </div>
+
+  <div class="piede"><span>Palette e tipografia</span><span>2 / 4</span></div>
+</section>
+
+<!-- ============================ PAGINA 3 ============================ -->
+<section class="pagina">
+  <p class="occhiello">Errori corretti</p>
+  <h2>Cosa non funzionava, e come è stato risolto</h2>
+
+  <h3 style="margin-top:2mm">Sul sito attuale</h3>
+  <div class="voce"><span class="b err">1</span><p><strong>Nessuna meta description.</strong> <span class="prima">Google sceglieva da solo il testo da mostrare nei risultati.</span>
+    <span class="dopo">Ora c'è una descrizione scritta (servizi + città), sotto i 160 caratteri.</span></p></div>
+  <div class="voce"><span class="b err">2</span><p><strong>Email e telefono non cliccabili.</strong> <span class="prima">Erano solo testo: da telefono bisognava copiarli a mano.</span>
+    <span class="dopo">Ora email e telefono si aprono con un tocco, anche dal menu mobile e dal footer.</span></p></div>
+  <div class="voce"><span class="b err">3</span><p><strong>Numero di cellulare scritto male.</strong> <span class="prima">"+39 3475767 538": spazio nel punto sbagliato.</span>
+    <span class="dopo">Nel nuovo sito non è pubblicato: va confermato dallo studio prima di inserirlo.</span></p></div>
+  <div class="voce"><span class="b err">4</span><p><strong>Indirizzo incompleto.</strong> <span class="prima">Solo "via Festaz 64, Aosta", senza CAP né provincia.</span>
+    <span class="dopo">Ora "Via Festaz 64, 11100 Aosta (AO)", con mappa e link a Google Maps.</span></p></div>
+  <div class="voce"><span class="b err">5</span><p><strong>Nessun menu, footer vuoto, pagine standard in errore 404</strong> (chi siamo, contatti, privacy, cookie).
+    <span class="dopo">Ora menu a 5 voci, menu mobile, footer con navigazione, recapiti e dati legali.</span></p></div>
+  <div class="voce"><span class="b err">6</span><p><strong>Colori del tema di serie</strong> (giallo #FFEE58, lilla, viola) <strong>e logo piccolo 60×57 px.</strong>
+    <span class="dopo">Ora palette ricavata dal logo e logo orizzontale con il segno originale e il nome dello studio.</span></p></div>
+  <div class="voce"><span class="b err">7</span><p><strong>Nessuna anteprima per social e WhatsApp, nessun dato strutturato, nome del sito vuoto in WordPress, logo senza testo alternativo.</strong>
+    <span class="dopo">Ora anteprima con immagine e titolo, scheda "studio professionale" con indirizzo e telefono per Google, sitemap e testi alternativi.</span></p></div>
+
+  <h3 style="margin-top:6mm">Durante la costruzione del nuovo sito</h3>
+  <div class="voce"><span class="b fix">A</span><p><strong>Il rosso del logo non era leggibile sui fondi scuri</strong> (2.99:1, sotto la soglia AA).
+    Il marchio è stato sdoppiato: rosso originale sui fondi chiari, rosso schiarito #E5624A (5.22:1) sull'antracite.</p></div>
+  <div class="voce"><span class="b fix">B</span><p><strong>Profili social segnaposto nei dati per Google.</strong> Lo studio non ha social collegati: i link vuoti
+    vengono esclusi dalla scheda strutturata invece di finire indicizzati.</p></div>
+  <div class="voce"><span class="b fix">C</span><p><strong>Residui del modello di partenza.</strong> Nomi di file, nome del pacchetto e commenti appartenenti ad
+    altri progetti sono stati ripuliti: nel codice non resta nessun dato di altri clienti.</p></div>
+  <div class="voce"><span class="b fix">D</span><p><strong>Barra "/" orfana</strong> fra categoria e località quando le bozze sono nascoste: ora segue le bozze.
+    E il test automatico del menu mobile aveva il vecchio colore scritto a mano: aggiornato al nuovo antracite.</p></div>
+
+  <div class="piede"><span>Errori corretti</span><span>3 / 4</span></div>
+</section>
+
+<!-- ============================ PAGINA 4 ============================ -->
+<section class="pagina">
+  <p class="occhiello">Miglioramenti</p>
+  <h2>Cosa ha in più il nuovo sito</h2>
+
+  <div class="due">
+    <div>
+      <div class="voce"><span class="b mig">+</span><p><strong>Una pagina che racconta lo studio</strong>: apertura con carosello, lo studio e i tre soci, banda dei servizi, metodo in 4 fasi, ambiti, portfolio filtrabile, contatti con mappa e form.</p></div>
+      <div class="voce"><span class="b mig">+</span><p><strong>Navigazione a schede</strong>: ogni voce del menu apre la sezione completa senza ricaricare la pagina; il logo riporta all'inizio.</p></div>
+      <div class="voce"><span class="b mig">+</span><p><strong>Animazioni misurate</strong>: ingressi morbidi, scorrimento orizzontale di metodo, ambiti e progetti. Si spengono da sole per chi le ha disattivate nel sistema.</p></div>
+      <div class="voce"><span class="b mig">+</span><p><strong>Orari e avviso "fuori sede"</strong> riportati come sul sito attuale, accanto a telefono ed email.</p></div>
+    </div>
+    <div>
+      <div class="voce"><span class="b mig">+</span><p><strong>Veloce</strong>: immagini in AVIF e WebP alla misura giusta per ogni schermo, caricamento differito, font precaricati, cache lunga sui file statici.</p></div>
+      <div class="voce"><span class="b mig">+</span><p><strong>Accessibile</strong>: contrasti AA, link "salta al contenuto", menu e carosello usabili da tastiera, testi alternativi su ogni immagine.</p></div>
+      <div class="voce"><span class="b mig">+</span><p><strong>Trovabile</strong>: titolo e descrizione, anteprima per WhatsApp e social, dati strutturati con indirizzo e telefono, sitemap.</p></div>
+      <div class="voce"><span class="b mig">+</span><p><strong>Tasto "Bozze"</strong>: mostra o nasconde i 184 contenuti ancora da confermare, senza spostare l'impaginazione.</p></div>
+    </div>
+  </div>
+
+  <div class="box scuro" style="margin-top:6mm">
+    <h3>Verifiche superate</h3>
+    <div class="numeri">
+      <div><b>34/34</b><span>controlli su Chrome reale: menu, schede, carosello, filtro, form, mobile</span></div>
+      <div><b>0</b><span>errori di <code style="background:rgba(255,255,255,.1);color:#fff">astro check</code> e in console</span></div>
+      <div><b>0</b><span>link vuoti, rotti o malformati</span></div>
+      <div><b>Node 22</b><span>build pronta per Netlify, configurazione inclusa</span></div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:6mm">Da completare prima della pubblicazione</h3>
+  <div class="due">
+    <div>
+      <div class="voce"><span class="b apr">!</span><p><strong>Foto</strong>: quelle a video sono provvisorie e non sono lavori dello studio. Servono foto dei progetti di Grafitech e dei tre soci.</p></div>
+      <div class="voce"><span class="b apr">!</span><p><strong>Progetti, metodo, ambiti</strong>: titoli, luoghi e testi sono bozze da confermare o sostituire.</p></div>
+      <div class="voce"><span class="b apr">!</span><p><strong>Dati legali</strong>: partita IVA e PEC, obbligatorie sul sito di un'attività professionale.</p></div>
+    </div>
+    <div>
+      <div class="voce"><span class="b apr">!</span><p><strong>Privacy e cookie policy</strong>: le pagine sono linkate ma vanno scritte coi dati dello studio.</p></div>
+      <div class="voce"><span class="b apr">!</span><p><strong>Form</strong>: oggi valida i campi ma non spedisce; va collegato all'email dello studio.</p></div>
+      <div class="voce"><span class="b apr">!</span><p><strong>Logo</strong>: il file sul sito attuale è a bassa risoluzione; serve la versione vettoriale.</p></div>
+    </div>
+  </div>
+
+  <div class="piede"><span>Miglioramenti e prossimi passi</span><span>4 / 4</span></div>
+</section>
+
+</body>
+</html>
